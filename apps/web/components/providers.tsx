@@ -3,16 +3,20 @@
 import * as React from "react"
 import { ThemeProvider as NextThemesProvider } from "next-themes"
 
+import StoreProvider from "@/state/redux";
+
 export function Providers({ children }: { children: React.ReactNode }) {
   return (
     <NextThemesProvider
       attribute="class"
-      defaultTheme="system"
+      defaultTheme="light"
       enableSystem
       disableTransitionOnChange
       enableColorScheme
     >
-      {children}
+      <StoreProvider>
+          {children}
+      </StoreProvider>
     </NextThemesProvider>
   )
 }
